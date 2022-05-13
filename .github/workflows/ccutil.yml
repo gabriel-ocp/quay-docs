@@ -49,18 +49,18 @@ jobs:
         options: -v ${{ github.workspace }}:/work 
         shell: bash
         run: |
-          ls /work
-          cd /work
-          ls
-          cd source/deploy_quay
-          ls
+          cd /work/source/deploy_quay
           ccutil compile --lang en_US --type asciidoc --main-file master.adoc
+          cp -Rf /work/source/deploy_quay/build/tmp/en-US/html-single/* /work/dest/master/deploy_quay/
+          cd /work/dest
+          git status
+          git config --local user.email "action@github.com"        
+          git config --local user.name "GitHub Action"
+          git status
+          # git diff-index --quiet HEAD || (git commit -a -m'DOCS Auto-update' --allow-empty && git push -f)
           
           
       # Runs a single command using the runners shell
       # docker run -ti --rm --privileged -v source:/source quay.io/rhn_support_gmcgoldr/levccutil  "/bin/bash cd /source/deploy_quay; ls; ccutil compile --lang en_US --type asciidoc --main-file master.adoc; ls -al "
 
-    - name: Run a one-line script
-      run: |
-        cd source/deploy_quay
-        ls -al
+
