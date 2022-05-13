@@ -66,7 +66,13 @@ jobs:
           #git diff-index --quiet HEAD || (git commit -a -m 'DOCS Auto-update' --allow-empty && git push -f)
           git add .
           git commit -m "update docs"
-          git push
+
+
+    - name: Push changes
+      uses: ad-m/github-push-action@master
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        branch: gh-pages
           
           
       # Runs a single command using the runners shell
