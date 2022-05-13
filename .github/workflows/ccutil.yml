@@ -44,7 +44,7 @@ jobs:
       # Runs a single command using the runners shell
     - name: Run a one-line script
       run: |
-        docker run --it --rm --privileged -v source:/source quay.io/rhn_support_gmcgoldr/levccutil  "/bin/bash cd /source/deploy_quay; ls; ccutil compile --lang en_US --type asciidoc --main-file master.adoc; ls -al "
+        docker run -ti --rm --privileged -v source:/source quay.io/rhn_support_gmcgoldr/levccutil  "/bin/bash cd /source/deploy_quay; ls; ccutil compile --lang en_US --type asciidoc --main-file master.adoc; ls -al "
         cd source/deploy_quay
         ls -al
         
