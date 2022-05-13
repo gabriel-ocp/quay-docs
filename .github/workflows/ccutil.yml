@@ -55,7 +55,10 @@ jobs:
           cd /work/source/deploy_quay_on_openshift_op_tng
           ccutil compile --lang en_US --type asciidoc --main-file master.adoc
           cp -Rf /work/source/deploy_quay_on_openshift_op_tng/build/tmp/en-US/html-single/* /work/dest/master/deploy_quay_on_openshift_op_tng/                    
-          cd /work/dest
+
+    - name: push
+      run: |  
+          cd dest
           git status
           git config --local user.email "action@github.com"        
           git config --local user.name "GitHub Action"
