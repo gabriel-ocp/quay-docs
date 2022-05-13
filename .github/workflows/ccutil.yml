@@ -46,10 +46,11 @@ jobs:
     - uses: addnab/docker-run-action@v3
       with:
         image: quay.io/rhn_support_gmcgoldr/levccutil
+        options: -v ${{ github.workspace }}:/work 
         shell: bash
         run: |
-          ls /github/workspace
-          cd /github/workspace
+          ls /work
+          cd /work
           ls
           cd source/deploy_quay
           ls
