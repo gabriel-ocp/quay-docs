@@ -49,13 +49,34 @@ jobs:
         options: -v ${{ github.workspace }}:/work 
         shell: bash
         run: |
+          cd /work/source/release_notes
+          ccutil compile --lang en_US --type asciidoc --main-file master.adoc
+          cp -Rf /work/source/release_notes/build/tmp/en-US/html-single/* /work/dest/master/release_notes/        
           cd /work/source/deploy_quay
           ccutil compile --lang en_US --type asciidoc --main-file master.adoc
           cp -Rf /work/source/deploy_quay/build/tmp/en-US/html-single/* /work/dest/master/deploy_quay/
           cd /work/source/deploy_quay_on_openshift_op_tng
           ccutil compile --lang en_US --type asciidoc --main-file master.adoc
           cp -Rf /work/source/deploy_quay_on_openshift_op_tng/build/tmp/en-US/html-single/* /work/dest/master/deploy_quay_on_openshift_op_tng/                    
-
+          cd /work/source/deploy_quay_ha
+          ccutil compile --lang en_US --type asciidoc --main-file master.adoc
+          cp -Rf /work/source/deploy_quay_ha/build/tmp/en-US/html-single/* /work/dest/master/deploy_quay_ha/
+          cd /work/source/config_quay
+          ccutil compile --lang en_US --type asciidoc --main-file master.adoc
+          cp -Rf /work/source/config_quay/build/tmp/en-US/html-single/* /work/dest/master/config_quay/          
+          cd /work/source/manage_quay
+          ccutil compile --lang en_US --type asciidoc --main-file master.adoc
+          cp -Rf /work/source/manage_quay/build/tmp/en-US/html-single/* /work/dest/master/manage_quay/          
+          cd /work/source/upgrade_quay
+          ccutil compile --lang en_US --type asciidoc --main-file master.adoc
+          cp -Rf /work/source/upgrade_quay/build/tmp/en-US/html-single/* /work/dest/master/upgrade_quay/                    
+          cd /work/source/use_quay
+          ccutil compile --lang en_US --type asciidoc --main-file master.adoc
+          cp -Rf /work/source/use_quay/build/tmp/en-US/html-single/* /work/dest/master/use_quay/             
+          cd /work/source/api
+          ccutil compile --lang en_US --type asciidoc --main-file master.adoc
+          cp -Rf /work/source/api/build/tmp/en-US/html-single/* /work/dest/master/api/                        
+          
     - name: push
       run: |  
           cd dest
