@@ -48,7 +48,10 @@ jobs:
         image: quay.io/rhn_support_gmcgoldr/levccutil
         shell: bash
         run: |
-          cd /source/deploy_quay
+          ls /github/workspace
+          cd /github/workspace
+          ls
+          cd source/deploy_quay
           ls
           ccutil compile --lang en_US --type asciidoc --main-file master.adoc
           
