@@ -59,8 +59,11 @@ jobs:
           git status
           git config --local user.email "action@github.com"        
           git config --local user.name "GitHub Action"
-          git diff
-          git diff-index --quiet HEAD || (git commit -a -m 'DOCS Auto-update' --allow-empty && git push -f)
+          #git diff
+          #git diff-index --quiet HEAD || (git commit -a -m 'DOCS Auto-update' --allow-empty && git push -f)
+          git add .
+          git commit -m "update docs"
+          git push
           
           
       # Runs a single command using the runners shell
