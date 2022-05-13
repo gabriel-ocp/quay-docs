@@ -41,46 +41,14 @@ jobs:
         pwd
         ls
         
-  check:
-    needs: get
-    runs-on: ubuntu-latest        
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-
       # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: |
-          pwd
-          ls
-          cd source
-          ls
-          cd deploy_quay_on_openshift_op_tng
-          ls
-          cd ../..
-          cd dest
-          ls
+    - name: Run a one-line script
+      run: |
+        docker run --it --rm --privileged -v source:/source quay.io/rhn_support_gmcgoldr/levccutil  "/bin/bash cd /source/deploy_quay; ls; ccutil compile --lang en_US --type asciidoc --main-file master.adoc; ls -al "
+        cd source/deploy_quay
+        ls -al
+        
+
           
           
-  build:
-    needs: get
-    runs-on: ubuntu-latest
-    container:
-      image: quay.io/rhn_support_gmcgoldr/levccutil  
-      volumes:
-        - ${{ github.workspace }}/source:/source
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
-    steps:
-
-
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: |
-          pwd
-          ls
-          cd source
-          ls
-          cd deploy_quay_on_openshift_op_tng
-          ls
-          ccutil compile --lang en_US --type asciidoc --main-file master.adoc
-          ls -al
