@@ -73,6 +73,7 @@ jobs:
       with:
         github_token: ${{ secrets.GITHUB_TOKEN }}
         branch: gh-pages
+        directory: dest
           
           
       # Runs a single command using the runners shell
