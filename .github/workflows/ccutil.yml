@@ -57,7 +57,7 @@ jobs:
         run: |
           pwd
           ls
-          cd /source
+          cd source
           ls
           cd deploy_quay_on_openshift_op_tng
           ls
