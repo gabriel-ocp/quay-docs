@@ -45,8 +45,9 @@ jobs:
       # Runs a single command using the runners shell
       - name: Run a one-line script
         run: |
-          cd /source
+          pwd
           ls
+          cd source
           cd deploy_quay_on_openshift_op_tng
           ls
           ccutil compile --lang en_US --type asciidoc --main-file master.adoc
