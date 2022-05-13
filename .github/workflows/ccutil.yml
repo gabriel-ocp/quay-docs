@@ -46,7 +46,7 @@ jobs:
     container:
       image: quay.io/rhn_support_gmcgoldr/levccutil  
       volumes:
-        - source:/source
+        - ${{ github.workspace }}/source:/source
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
@@ -57,7 +57,8 @@ jobs:
         run: |
           pwd
           ls
-          cd source
+          cd /source
+          ls
           cd deploy_quay_on_openshift_op_tng
           ls
           ccutil compile --lang en_US --type asciidoc --main-file master.adoc
